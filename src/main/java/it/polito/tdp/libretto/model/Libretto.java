@@ -5,11 +5,14 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import it.polito.tdp.libretto.db.VotoDAO;
+
 public class Libretto {
 	private List<Voto> voti; // utilizziamo l'interfaccia e non le classi!!! in questo modo se modifico non sarà un problema
 
 	public Libretto() {
-		this.voti=new ArrayList<Voto>(); // qua decidiamo se utilizzare Arraylist o LinkedList
+		VotoDAO dao=new VotoDAO();
+		this.voti=dao.listaDiVoti();
 	}
 	
 	public boolean add(Voto v) {
@@ -18,6 +21,8 @@ public class Libretto {
 			throw new IllegalArgumentException("Voto Errato: "+v);
 			//non aggiungere voto
 		}
+		VotoDAO dao=new VotoDAO();
+		dao.createVoto(v);
 		return this.voti.add(v); 
 	}
 		

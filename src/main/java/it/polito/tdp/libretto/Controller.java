@@ -73,6 +73,7 @@ public class Controller { // controller non deve fare mai la new !! la new la fa
 	    }
 	    public void setModel(Libretto model) {
 			this.model = model;
+			this.txtRisultato.setText(this.model.stampa());
 		}
 
 }
